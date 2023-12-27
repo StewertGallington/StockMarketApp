@@ -3,15 +3,12 @@ package com.plcoding.stockmarketapp.presentation.company_info
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
-@Destination(start = true)
+@Destination
 fun CompanyInfoScreen(
-    navigator: DestinationsNavigator?,
+    symbol: String,
     viewModel: CompanyInfoViewModel = hiltViewModel(),
 ){
-    CompanyInfos(
-        state = viewModel.state
-    )
+    CompanyInfoDetail(viewModel.state)
 }

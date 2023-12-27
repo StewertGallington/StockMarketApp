@@ -15,10 +15,10 @@ interface StockRepository {
     suspend fun getIntradayData(
         fetchFromRemote: Boolean,
         symbol: String
-    ): Flow<Resource<List<IntradayInfo>>>
+    ): Resource<List<IntradayInfo>>
 
     suspend fun getCompanyInfo(
         fetchFromRemote: Boolean,
         symbol: String
-    ): Flow<Resource<CompanyInfo>>
+    ): Resource<CompanyInfo>
 }

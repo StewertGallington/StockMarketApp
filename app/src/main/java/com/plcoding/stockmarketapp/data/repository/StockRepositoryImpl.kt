@@ -1,7 +1,6 @@
 package com.plcoding.stockmarketapp.data.repository
-import androidx.compose.runtime.internal.composableLambdaInstance
+import android.util.Log
 import com.plcoding.stockmarketapp.data.csv.CsvParser
-import com.plcoding.stockmarketapp.data.local.StockDao
 import com.plcoding.stockmarketapp.data.local.StockDatabase
 import com.plcoding.stockmarketapp.data.mapper.toCompanyInfo
 import com.plcoding.stockmarketapp.data.mapper.toCompanyListing
@@ -98,45 +97,36 @@ class StockRepositoryImpl @Inject constructor(
     override suspend fun getIntradayData(
         fetchFromRemote: Boolean,
         symbol: String
-    ): Flow<Resource<List<IntradayInfo>>> {
+    ): Resource<List<IntradayInfo>> {
         return try {
             val response = api.getIntradayInfo(symbol)
             val intradayInfo = introdayInfoParser.parse(response.byteStream())
-            flow {
-                emit(Resource.Success(intradayInfo))
-            }
+            Log.d("StockRepositoryImpl", "getIntradayData: ${intradayInfo.size}")
+            Resource.Success(intradayInfo)
         } catch (ioe: IOException) {
             ioe.printStackTrace()
-            flow {
-                emit(Resource.Error<List<IntradayInfo>>(ioe.localizedMessage ?: "An unexpected error occurred"))
-            }
+            Resource.Error<List<IntradayInfo>>(ioe.localizedMessage ?: "An unexpected error occurred")
         } catch (http: HttpException) {
             http.printStackTrace()
-            flow {
-                emit(Resource.Error<List<IntradayInfo>>(http.localizedMessage ?: "An unexpected error occurred"))
-            }
+            Resource.Error<List<IntradayInfo>>(http.localizedMessage ?: "An unexpected error occurred")
         }
     }
 
     override suspend fun getCompanyInfo(
         fetchFromRemote: Boolean,
         symbol: String
-    ): Flow<Resource<CompanyInfo>> {
+    ): Resource<CompanyInfo> {
         return try {
             val result = api.getCompanyInfo(symbol)
-            flow {
-                emit(Resource.Success(result.toCompanyInfo()))
-            }
+            val convertedCompanyInfo = result.toCompanyInfo()
+            Log.d("StockRepositoryImpl", "getCompanyInfo: ${convertedCompanyInfo.name}")
+            Resource.Success(convertedCompanyInfo)
         } catch (ioe: IOException) {
             ioe.printStackTrace()
-            flow {
-                emit(Resource.Error(ioe.localizedMessage ?: "An unexpected error occurred"))
-            }
+            Resource.Error(ioe.localizedMessage ?: "An unexpected error occurred")
         } catch (http: HttpException) {
             http.printStackTrace()
-            flow {
-                emit(Resource.Error(http.localizedMessage ?: "An unexpected error occurred"))
-            }
+            Resource.Error(http.localizedMessage ?: "An unexpected error occurred")
         }
     }
 

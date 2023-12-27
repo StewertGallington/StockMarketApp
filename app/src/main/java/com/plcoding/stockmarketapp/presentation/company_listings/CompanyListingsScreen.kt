@@ -2,11 +2,12 @@ package com.plcoding.stockmarketapp.presentation.company_listings
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.plcoding.stockmarketapp.presentation.destinations.CompanyInfoScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
-//@Destination(start = true)
+@Destination(start = true)
 fun CompanyListingsScreen(
     navigator: DestinationsNavigator?,
     viewModel: CompanyListingsViewModel = hiltViewModel(),
@@ -14,6 +15,11 @@ fun CompanyListingsScreen(
     CompanyListings(
         state = viewModel.state,
         onRefresh = { viewModel.onEvent(CompanyListingsEvent.Refresh) },
-        onSearchQueryChange = { viewModel.onEvent(CompanyListingsEvent.OnSearchQueryChange(it)) }
+        onSearchQueryChange = { viewModel.onEvent(CompanyListingsEvent.OnSearchQueryChange(it)) },
+        onItemClicked = {
+            navigator?.navigate(
+                CompanyInfoScreenDestination(it.symbol)
+            )
+        }
     )
 }

@@ -3,7 +3,6 @@ package com.plcoding.stockmarketapp.data.csv
 import com.opencsv.CSVReader
 import com.plcoding.stockmarketapp.data.mapper.toIntradayInfo
 import com.plcoding.stockmarketapp.data.remote.dto.IntradayInfoDto
-import com.plcoding.stockmarketapp.domain.model.CompanyListing
 import com.plcoding.stockmarketapp.domain.model.IntradayInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,8 +18,8 @@ class IntradayInfoParser @Inject constructor() : CsvParser<IntradayInfo> {
         val result = withContext(Dispatchers.IO) {
             val csvReader = CSVReader(InputStreamReader(stream))
             csvReader.readAll().drop(1).mapNotNull { row ->
-                    val timestamp = row[0] ?: return@mapNotNull null
-                    val close = row[4] ?: return@mapNotNull null
+                    val timestamp = row.getOrNull(0) ?: return@mapNotNull null
+                    val close = row.getOrNull(4) ?: return@mapNotNull null
                     IntradayInfoDto(
                         timestamp,
                         close.toDouble()
