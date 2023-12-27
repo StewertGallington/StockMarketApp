@@ -134,67 +134,67 @@ fun StockChart(
 @Composable
 @Preview(showBackground = true)
 fun StockChartPreview() {
-    val infos = listOf(
-        IntradayInfo(
-            close = 100f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T00:00:00")
-        ),
-        IntradayInfo(
-            close = 200f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T01:00:00")
-        ),
-        IntradayInfo(
-            close = 300f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T02:00:00")
-        ),
-        IntradayInfo(
-            close = 400f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T03:00:00")
-        ),
-        IntradayInfo(
-            close = 500f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T04:00:00")
-        ),
-        IntradayInfo(
-            close = 600f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T05:00:00")
-        ),
-        IntradayInfo(
-            close = 700f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T06:00:00")
-        ),
-        IntradayInfo(
-            close = 800f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T07:00:00")
-        ),
-        IntradayInfo(
-            close = 900f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T08:00:00")
-        ),
-        IntradayInfo(
-            close = 1000f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T09:00:00")
-        ),
-        IntradayInfo(
-            close = 1100f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T10:00:00")
-        ),
-        IntradayInfo(
-            close = 1200f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T11:00:00")
-        ),
-        IntradayInfo(
-            close = 1300f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T12:00:00")
-        ),
-        IntradayInfo(
-            close = 1400f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T13:00:00")
-        ),
-        IntradayInfo(
-            close = 1500f.toDouble(),
-            date = LocalDateTime.parse("2021-01-01T14:00:00")
-        ))
+        val infos = listOf(
+            IntradayInfo(
+                close = 100f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T00:00:00")
+            ),
+            IntradayInfo(
+                close = 200f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T01:00:00")
+            ),
+            IntradayInfo(
+                close = 300f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T02:00:00")
+            ),
+            IntradayInfo(
+                close = 400f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T03:00:00")
+            ),
+            IntradayInfo(
+                close = 500f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T04:00:00")
+            ),
+            IntradayInfo(
+                close = 600f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T05:00:00")
+            ),
+            IntradayInfo(
+                close = 700f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T06:00:00")
+            ),
+            IntradayInfo(
+                close = 800f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T07:00:00")
+            ),
+            IntradayInfo(
+                close = 900f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T08:00:00")
+            ),
+            IntradayInfo(
+                close = 1000f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T09:00:00")
+            ),
+            IntradayInfo(
+                close = 1100f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T10:00:00")
+            ),
+            IntradayInfo(
+                close = 1200f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T11:00:00")
+            ),
+            IntradayInfo(
+                close = 1300f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T12:00:00")
+            ),
+            IntradayInfo(
+                close = 1400f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T13:00:00")
+            ),
+            IntradayInfo(
+                close = 1500f.toDouble(),
+                date = LocalDateTime.parse("2021-01-01T14:00:00")
+            ))
 
     StockChart(infos)
 }
